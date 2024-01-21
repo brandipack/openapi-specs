@@ -2,6 +2,9 @@ openapi: 3.0.0
 info:
   title: My Vendor Tracker GPT API
   version: 1.0.0
+servers:
+  - url: 'https://stormy-reaches-84922-1a8e1480ffe5.herokuapp.com/'
+    description: Production server
 paths:
   /get_db_schema:
     post:
