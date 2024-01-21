@@ -1,0 +1,77 @@
+openapi: 3.0.0
+info:
+  title: My Vendor Tracker GPT API
+  version: 1.0.0
+paths:
+  /get_db_schema:
+    post:
+      summary: "Get database schema"
+      operationId: "get_db_schema"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+
+  /query_db:
+    post:
+      summary: "Retrieve specific data from database"
+      operationId: "query_db"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parameters:
+                  type: object
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+					
+  /update_db:
+    post:
+      summary: "Update database entries"
+      operationId: "update_db"
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                updateParams:
+                  type: object
+      responses:
+        '200':
+          description: Successful update
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
